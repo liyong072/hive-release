@@ -88,6 +88,8 @@ public class serdeConstants {
 
   public static final String FLOAT_TYPE_NAME = "float";
 
+  public static final String IPV4_TYPE_NAME = "ipv4";
+
   public static final String DOUBLE_TYPE_NAME = "double";
 
   public static final String STRING_TYPE_NAME = "string";

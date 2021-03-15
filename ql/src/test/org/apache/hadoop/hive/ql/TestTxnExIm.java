@@ -209,6 +209,8 @@ target/tmp/org.apache.hadoop.hive.ql.TestTxnCommands-1521148657811/
 
 23 directories, 11 files
 */
+
+
   }
   /**
    * This specifies partial partition spec omitting top/first columns.

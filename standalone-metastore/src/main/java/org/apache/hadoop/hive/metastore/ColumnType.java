@@ -48,6 +48,8 @@ public class ColumnType {
 
   public static final String FLOAT_TYPE_NAME = "float";
 
+  public static final String IPV4_TYPE_NAME = "ipv4";
+
   public static final String DOUBLE_TYPE_NAME = "double";
 
   public static final String STRING_TYPE_NAME = "string";
@@ -169,6 +171,7 @@ public class ColumnType {
     INT_TYPE_NAME,
     BIGINT_TYPE_NAME,
     FLOAT_TYPE_NAME,
+    IPV4_TYPE_NAME,
     DOUBLE_TYPE_NAME,
     STRING_TYPE_NAME,
     CHAR_TYPE_NAME,
@@ -272,6 +275,7 @@ public class ColumnType {
     typeToThriftTypeMap.put(DECIMAL_TYPE_NAME, "decimal");
     typeToThriftTypeMap.put(INTERVAL_YEAR_MONTH_TYPE_NAME, INTERVAL_YEAR_MONTH_TYPE_NAME);
     typeToThriftTypeMap.put(INTERVAL_DAY_TIME_TYPE_NAME, INTERVAL_DAY_TIME_TYPE_NAME);
+    typeToThriftTypeMap.put(IPV4_TYPE_NAME, "string");
   }
 
   /**

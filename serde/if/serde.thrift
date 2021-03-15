@@ -53,6 +53,7 @@ const string SMALLINT_TYPE_NAME  = "smallint";
 const string INT_TYPE_NAME       = "int";
 const string BIGINT_TYPE_NAME    = "bigint";
 const string FLOAT_TYPE_NAME     = "float";
+const string IPV4_TYPE_NAME     = "ipv4";
 const string DOUBLE_TYPE_NAME    = "double";
 const string STRING_TYPE_NAME    = "string";
 const string CHAR_TYPE_NAME      = "char";
@@ -85,6 +86,7 @@ const set<string> PrimitiveTypes  = [
   INT_TYPE_NAME
   BIGINT_TYPE_NAME
   FLOAT_TYPE_NAME
+  IPV4_TYPE_NAME
   DOUBLE_TYPE_NAME
   STRING_TYPE_NAME
   VARCHAR_TYPE_NAME

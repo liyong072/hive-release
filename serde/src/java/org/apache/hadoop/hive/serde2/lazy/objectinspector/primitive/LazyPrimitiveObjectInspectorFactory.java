@@ -136,21 +136,23 @@ public final class LazyPrimitiveObjectInspectorFactory {
       PrimitiveTypeInfo typeInfo, LazyObjectInspectorParameters lazyParams) {
     PrimitiveCategory primitiveCategory = typeInfo.getPrimitiveCategory();
 
-    switch(primitiveCategory) {
-    case STRING:
-      return getLazyStringObjectInspector(lazyParams.isEscaped(), lazyParams.getEscapeChar());
-    case CHAR:
-      return getLazyHiveCharObjectInspector((CharTypeInfo)typeInfo,
-          lazyParams.isEscaped(), lazyParams.getEscapeChar());
-    case VARCHAR:
-      return getLazyHiveVarcharObjectInspector((VarcharTypeInfo)typeInfo,
-          lazyParams.isEscaped(), lazyParams.getEscapeChar());
-    case BOOLEAN:
-      return getLazyBooleanObjectInspector(lazyParams.isExtendedBooleanLiteral());
-    case TIMESTAMP:
-      return getLazyTimestampObjectInspector(lazyParams.getTimestampFormats());
-    default:
-     return getLazyObjectInspector(typeInfo);
+    switch (primitiveCategory) {
+      case STRING:
+        return getLazyStringObjectInspector(lazyParams.isEscaped(), lazyParams.getEscapeChar());
+      case CHAR:
+        return getLazyHiveCharObjectInspector((CharTypeInfo) typeInfo,
+                lazyParams.isEscaped(), lazyParams.getEscapeChar());
+      case VARCHAR:
+        return getLazyHiveVarcharObjectInspector((VarcharTypeInfo) typeInfo,
+                lazyParams.isEscaped(), lazyParams.getEscapeChar());
+      case BOOLEAN:
+        return getLazyBooleanObjectInspector(lazyParams.isExtendedBooleanLiteral());
+      case TIMESTAMP:
+        return getLazyTimestampObjectInspector(lazyParams.getTimestampFormats());
+      case IPV4:
+        return getLazyIPV4ObjectInspector(lazyParams.isEscaped(), lazyParams.getEscapeChar());
+      default:
+        return getLazyObjectInspector(typeInfo);
     }
   }
 
@@ -201,6 +203,24 @@ public final class LazyPrimitiveObjectInspectorFactory {
         cachedLazyStringTypeOIs.putIfAbsent(signature, result);
       if (prev != null) {
         result = (LazyStringObjectInspector) prev;
+      }
+    }
+    return result;
+  }
+
+  public static LazyIPV4ObjectInspector getLazyIPV4ObjectInspector(boolean escaped, byte escapeChar) {
+    ArrayList<Object> signature = new ArrayList<Object>();
+    signature.add(TypeInfoFactory.ipv4TypeInfo);
+    signature.add(Boolean.valueOf(escaped));
+    signature.add(Byte.valueOf(escapeChar));
+    LazyIPV4ObjectInspector result = (LazyIPV4ObjectInspector) cachedLazyStringTypeOIs
+            .get(signature);
+    if (result == null) {
+      result = new LazyIPV4ObjectInspector(escaped, escapeChar);
+      AbstractPrimitiveLazyObjectInspector<?> prev =
+              cachedLazyStringTypeOIs.putIfAbsent(signature, result);
+      if (prev != null) {
+        result = (LazyIPV4ObjectInspector) prev;
       }
     }
     return result;

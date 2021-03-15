@@ -239,6 +239,7 @@ class MetaStoreDirectSql {
       initQueries.add(pm.newQuery(MCreationMetadata.class, "dbName == ''"));
       Query q;
       while ((q = initQueries.peekFirst()) != null) {
+        LOG.info("query sql:"+q.toString());
         q.execute();
         initQueries.pollFirst();
       }

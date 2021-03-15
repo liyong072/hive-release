@@ -75,6 +75,10 @@ public final class PrimitiveObjectInspectorFactory {
       new WritableLongObjectInspector();
   public static final WritableFloatObjectInspector writableFloatObjectInspector =
       new WritableFloatObjectInspector();
+
+  public static final WritableIPV4ObjectInspector writableIPV4ObjectInspector =
+          new WritableIPV4ObjectInspector();
+
   public static final WritableDoubleObjectInspector writableDoubleObjectInspector =
       new WritableDoubleObjectInspector();
   public static final WritableStringObjectInspector writableStringObjectInspector =
@@ -116,6 +120,9 @@ public final class PrimitiveObjectInspectorFactory {
         writableLongObjectInspector);
     cachedPrimitiveWritableInspectorCache.put(TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.FLOAT_TYPE_NAME),
         writableFloatObjectInspector);
+
+    cachedPrimitiveWritableInspectorCache.put(TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.IPV4_TYPE_NAME),
+            writableIPV4ObjectInspector);
     cachedPrimitiveWritableInspectorCache.put(TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.DOUBLE_TYPE_NAME),
         writableDoubleObjectInspector);
     cachedPrimitiveWritableInspectorCache.put(TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.STRING_TYPE_NAME),
@@ -147,6 +154,8 @@ public final class PrimitiveObjectInspectorFactory {
     primitiveCategoryToWritableOI.put(PrimitiveCategory.INT, writableIntObjectInspector);
     primitiveCategoryToWritableOI.put(PrimitiveCategory.LONG, writableLongObjectInspector);
     primitiveCategoryToWritableOI.put(PrimitiveCategory.FLOAT, writableFloatObjectInspector);
+    primitiveCategoryToWritableOI.put(PrimitiveCategory.IPV4, writableIPV4ObjectInspector);
+
     primitiveCategoryToWritableOI.put(PrimitiveCategory.DOUBLE, writableDoubleObjectInspector);
     primitiveCategoryToWritableOI.put(PrimitiveCategory.STRING, writableStringObjectInspector);
     primitiveCategoryToWritableOI.put(PrimitiveCategory.CHAR, writableHiveCharObjectInspector);
@@ -173,6 +182,8 @@ public final class PrimitiveObjectInspectorFactory {
       new JavaLongObjectInspector();
   public static final JavaFloatObjectInspector javaFloatObjectInspector =
       new JavaFloatObjectInspector();
+  public static final JavaFloatObjectInspector javaIPV4ObjectInspector =
+          new JavaFloatObjectInspector();
   public static final JavaDoubleObjectInspector javaDoubleObjectInspector =
       new JavaDoubleObjectInspector();
   public static final JavaStringObjectInspector javaStringObjectInspector =
@@ -214,6 +225,8 @@ public final class PrimitiveObjectInspectorFactory {
         javaLongObjectInspector);
     cachedPrimitiveJavaInspectorCache.put(TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.FLOAT_TYPE_NAME),
         javaFloatObjectInspector);
+    cachedPrimitiveJavaInspectorCache.put(TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.IPV4_TYPE_NAME),
+            javaIPV4ObjectInspector);
     cachedPrimitiveJavaInspectorCache.put(TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.DOUBLE_TYPE_NAME),
         javaDoubleObjectInspector);
     cachedPrimitiveJavaInspectorCache.put(TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.STRING_TYPE_NAME),

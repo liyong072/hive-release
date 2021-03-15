@@ -196,6 +196,11 @@ public class TypeConverter {
               dtFactory.createSqlType(SqlTypeName.VARCHAR, Integer.MAX_VALUE),
               Charset.forName(ConversionUtil.NATIVE_UTF16_CHARSET_NAME), SqlCollation.IMPLICIT);
       break;
+    case IPV4:
+        convertedType = dtFactory.createTypeWithCharsetAndCollation(
+                dtFactory.createSqlType(SqlTypeName.VARCHAR, Integer.MAX_VALUE),
+                Charset.forName(ConversionUtil.NATIVE_UTF16_CHARSET_NAME), SqlCollation.IMPLICIT);
+      break;
     case DATE:
       convertedType = dtFactory.createSqlType(SqlTypeName.DATE);
       break;
@@ -360,15 +365,15 @@ public class TypeConverter {
     case VARCHAR:
       int varcharLength = rType.getPrecision();
       if (varcharLength < 1 || varcharLength > HiveVarchar.MAX_VARCHAR_LENGTH)
-        return TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.STRING_TYPE_NAME);
+      {return TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.STRING_TYPE_NAME);}
       else
-        return TypeInfoFactory.getVarcharTypeInfo(varcharLength);
+      {return TypeInfoFactory.getVarcharTypeInfo(varcharLength);}
     case CHAR:
       int charLength = rType.getPrecision();
       if (charLength < 1 || charLength > HiveChar.MAX_CHAR_LENGTH)
-        return TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.STRING_TYPE_NAME);
+      {return TypeInfoFactory.getPrimitiveTypeInfo(serdeConstants.STRING_TYPE_NAME);}
       else
-        return TypeInfoFactory.getCharTypeInfo(charLength);
+      {return TypeInfoFactory.getCharTypeInfo(charLength);}
     default:
       return TypeInfoFactory.voidTypeInfo;
     }
@@ -386,11 +391,11 @@ public class TypeConverter {
       break;
     case VARCHAR: {
       if (calciteType.getPrecision() == Integer.MAX_VALUE)
-        ht = new HiveToken(HiveParser.TOK_STRING, "TOK_STRING", String.valueOf(calciteType
-            .getPrecision()));
+      { ht = new HiveToken(HiveParser.TOK_STRING, "TOK_STRING", String.valueOf(calciteType
+            .getPrecision()));}
       else
-        ht = new HiveToken(HiveParser.TOK_VARCHAR, "TOK_VARCHAR", String.valueOf(calciteType
-            .getPrecision()));
+      { ht = new HiveToken(HiveParser.TOK_VARCHAR, "TOK_VARCHAR", String.valueOf(calciteType
+            .getPrecision()));}
     }
       break;
     case DECIMAL: {

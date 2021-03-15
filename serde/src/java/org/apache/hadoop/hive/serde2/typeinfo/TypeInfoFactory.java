@@ -51,6 +51,7 @@ public final class TypeInfoFactory {
   public static final PrimitiveTypeInfo charTypeInfo = new CharTypeInfo(HiveChar.MAX_CHAR_LENGTH);
   public static final PrimitiveTypeInfo varcharTypeInfo = new VarcharTypeInfo(HiveVarchar.MAX_VARCHAR_LENGTH);
   public static final PrimitiveTypeInfo floatTypeInfo = new PrimitiveTypeInfo(serdeConstants.FLOAT_TYPE_NAME);
+  public static final PrimitiveTypeInfo ipv4TypeInfo = new PrimitiveTypeInfo(serdeConstants.IPV4_TYPE_NAME);
   public static final PrimitiveTypeInfo doubleTypeInfo = new PrimitiveTypeInfo(serdeConstants.DOUBLE_TYPE_NAME);
   public static final PrimitiveTypeInfo byteTypeInfo = new PrimitiveTypeInfo(serdeConstants.TINYINT_TYPE_NAME);
   public static final PrimitiveTypeInfo shortTypeInfo = new PrimitiveTypeInfo(serdeConstants.SMALLINT_TYPE_NAME);
@@ -87,6 +88,7 @@ public final class TypeInfoFactory {
     cachedPrimitiveTypeInfo.put(charTypeInfo.getQualifiedName(), charTypeInfo);
     cachedPrimitiveTypeInfo.put(varcharTypeInfo.getQualifiedName(), varcharTypeInfo);
     cachedPrimitiveTypeInfo.put(serdeConstants.FLOAT_TYPE_NAME, floatTypeInfo);
+    cachedPrimitiveTypeInfo.put(serdeConstants.IPV4_TYPE_NAME, ipv4TypeInfo);
     cachedPrimitiveTypeInfo.put(serdeConstants.DOUBLE_TYPE_NAME, doubleTypeInfo);
     cachedPrimitiveTypeInfo.put(serdeConstants.TINYINT_TYPE_NAME, byteTypeInfo);
     cachedPrimitiveTypeInfo.put(serdeConstants.SMALLINT_TYPE_NAME, shortTypeInfo);
